@@ -29,19 +29,26 @@ public class CustomerService {
                         format("Cannot update customer:: No customer found with the provided ID:: %s ", request.id())
                 ));
         mergerCustomer(customer, request);
-        this.repository.save(customer);
+        repository.save(customer);
     }
 
     private void mergerCustomer(Customer customer, @Valid CustomerRequest request) {
         if (StringUtils.isNotBlank(request.firstName())) {
             customer.setFirstName(request.firstName());
         }
+
+        if (StringUtils.isNotBlank(request.lastName())) {
+            customer.setLastName(request.lastName());
+        }
+
         if (StringUtils.isNotBlank(request.email())) {
             customer.setEmail(request.email());
         }
+
         if (request.address() != null) {
             customer.setAddress(request.address());
         }
+
     }
 
     public List<CustomerResponse> findAllCustomers() {

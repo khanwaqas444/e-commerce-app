@@ -52,7 +52,7 @@ return ResponseEntity.ok(service.createCustomer(request));
 
     @DeleteMapping("/{customer-id}")
     public ResponseEntity<Void> delete(
-            @PathVariable("custommer-id") String customerId
+            @PathVariable("customer-id") String customerId
     ) {
         service.deleteCustomer(customerId);
         return ResponseEntity.accepted().build();
